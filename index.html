@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ABOUT author</title>
+<title>DMF</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/normalize.css">
@@ -15,7 +15,39 @@
 <link rel="stylesheet" href="css/templatemo-style.css">
 <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
+<style>
+    #musicBox{
+        position: fixed;
+        top: 75%;
+        right: 2%;
+        width: 70px;
+        height: 70px;
+        z-index: 10000;
+    }
+    #musicBox img{
+        width: 90%;
+        height: 90%;
+        border-radius: 70px;
+    }
+    #hint{
+    	z-index: 10000;
+    	display: none;
+    	position: fixed;
+    	width: 100%;
+    	height: 20px;
+    	margin: auto;
+    	bottom: 3px;
+    	color: #fff;
+    	font-size: 20px;
+    	text-align: center;
+    }
+</style>
 <body>
+	<audio id='music' controls="controls" hidden="hidden" loop="loop">
+		<source src="music/Charlie Puth - Look At Me Now.mp3" type="audio/mpeg" />
+	</audio>
+<div id='hint'></div>
+<div id="musicBox"><img src="img/music.png" alt=""></div>
 <!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -318,5 +350,53 @@
 <script src="js/min/plugins.min.js"></script>
 <script src="js/min/main.min.js"></script>
 <script type="text/javascript" src="//js.users.51.la/19663097.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var state = 0;
+		var t
+		var i = 0;
+		function start(){
+			state = 1;
+			t = setInterval(function(){
+				i = i+1
+				$('#musicBox img').css('transform','rotate('+i+'deg)');
+				$('#musicBox img').css('-ms-transform','rotate('+i+'deg)');
+				$('#musicBox img').css('-moz-transform','rotate('+i+'deg)');
+				$('#musicBox img').css('-webkit-transform','rotate('+i+'deg)');
+				$('#musicBox img').css('-o-transform','rotate('+i+'deg)');
+			},5)
+		}
+		function end(){
+			state = 0;
+			clearInterval(t);
+		}
+		$('#musicBox').click(function(){
+			if(state == '0'){
+				console.log('0')
+				start();
+				music.play();
+				hint.innerText = '背景音乐已开启'
+//				$('#hint').css('display','block')
+					$('#hint').slideDown('slow')
+				setTimeout(function(){
+//					$('#hint').css('display','none')
+					$('#hint').slideUp('slow')
+				},2000)
+			}
+			else if(state == '1'){
+				console.log('1')
+				end();
+				music.pause();
+				hint.innerText = '背景音乐已关闭'
+//				$('#hint').css('display','block')
+					$('#hint').slideDown('slow')
+				setTimeout(function(){
+//					$('#hint').css('display','none')
+					$('#hint').slideUp('slow')
+				},2000)
+			}
+		})
+	})
+</script>
 </body>
 </html>

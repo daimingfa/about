@@ -49,6 +49,30 @@
 		<source src="music/Charlie Puth - Look At Me Now.mp3" type="audio/mpeg" />
 	</audio>
 <div id='hint'></div>
+<nav id="navigation">
+	<div class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">切换导航</span>
+					<i class="fa fa-bars"></i>
+				</button>
+				<p class="navbar-brand"><img style="height: 260%;" src="img/dmf.png"/></p>
+			</div>
+			<div class="navbar-collapse collapse">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#home" class="current" data-hover='HOBBY'>HOBBY</a></li>
+					<li><a href="#about">ABOUT</a></li>
+					<li><a href="#gallery">PHOTO</a></li>
+					<li><a href="#contact">CONTACT</a></li>
+				</ul>
+
+			</div><!--/.nav-collapse -->
+		</div><!--/.container -->
+	</div><!--navbar-default-->
+</nav><!--navigation section end here-->
+
 <div id="musicBox"><img src="img/music.png" alt=""></div>
 <!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -129,29 +153,6 @@
 </div> <!-- Carousel -->
 
 
-<nav id="navigation">
-	<div class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">切换导航</span>
-					<i class="fa fa-bars"></i>
-				</button>
-				<a class="navbar-brand" href="index.html">Menu</a>
-			</div>
-			<div class="navbar-collapse collapse">
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#home" class="current">爱好=游戏</a></li>
-					<li><a href="#about">关于我</a></li>
-					<li><a href="#gallery">相册</a></li>
-					<li><a href="#contact">留言</a></li>
-				</ul>
-
-			</div><!--/.nav-collapse -->
-		</div><!--/.container -->
-	</div><!--navbar-default-->
-</nav><!--navigation section end here-->
 
 
 <section id="about" class="page-section first-section">
@@ -243,7 +244,8 @@
 			<div class="gallery-holder">
 				<div class="col-md-3 col-sm-6 col-xs-12 gallery-item">
 					<div class="gallery-thumb">
-						<img src="img/baidu.jpg" alt="">
+						<p>小时候</p>
+						<img src="img/jz.jpg" alt="">
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 col-xs-12 gallery-item">
@@ -295,7 +297,7 @@
 		<div class="row page-heading">
 			<div class="col-md-8 col-sm-8">
 				<h3 class="page-title">留言</h3>
-				<p class="page-subtitle">借个几百块钱来买个服务器？支持QQ钱包、微信、支付宝</p>
+				<p class="page-subtitle">暂时不可用</p>
 			</div>
 			<div class="col-md-4 col-sm-4 hidden-xs text-right">
 				<p class="page-icon"><i class="fa fa-envelope"></i></p>
@@ -315,7 +317,7 @@
 							<input type="text" id="subject" placeholder="说明情况（比如：妹子！！）...">
 						</fieldset>
 						<fieldset class="col-md-12 col-sm-12 col-xs-12">
-							<textarea style='resize:none;' name="message" id="message" cols="30" rows="6" placeholder="这里还用说？？？..."></textarea>
+							<textarea style='resize:none;' name="message" id="message" cols="30" rows="6" placeholder="想说啥说啥..."></textarea>
 						</fieldset>
 						<fieldset class="col-md-12 col-sm-12 col-xs-12">
 							<input type="button" class="button default" value="暂不可提交">
@@ -394,7 +396,41 @@
 					$('#hint').slideUp('slow')
 				},2000)
 			}
-		})
+		});
+		var a_idx = 0,
+        b_idx = 0;
+    c_idx = 0;
+    //点击出现文字效果
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善"),
+                b = new Array("#09ebfc", "#ff6651", "#ffb351", "#51ff65", "#5197ff", "#a551ff", "#ff51f7", "#ff518e", "#ff5163", "#efff51"),
+                c = new Array("12", "14", "16", "18", "20", "22", "24", "26", "28", "30");
+            var $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            b_idx = (b_idx + 1) % b.length;
+            c_idx = (c_idx + 1) % c.length;
+            var x = e.pageX,
+                y = e.pageY;
+            $i.css({
+                "z-index": 999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "font-size": c[c_idx] + "px",
+                "color": b[b_idx]
+            });
+            $("body").append($i);
+            $i.animate({
+                "top": y - 180,
+                "opacity": 0
+            }, 1500, function() {
+                $i.remove();
+            });
+        });
+    });
+    var _hmt = _hmt || [];
 	})
 </script>
 </body>

@@ -41,6 +41,12 @@
     	font-size: 20px;
     	text-align: center;
     }
+    video{
+    	min-width: 100%;  
+        min-height: 100%;  
+        height: auto;  
+        width: auto;
+    }
 </style>
 <!--github-->
 
@@ -83,11 +89,16 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
 		<div class="item active">
-			<div class="item-1"></div>
+			<div class="item-1">
+						<video id="shipin" autoplay="autoplay" loop="loop">
+						  　　<source src="video/3.mp4" type="video/mp4">
+						</video>
+			</div>
 			<div class="carousel-caption">
 				<div class="container">
 					<div class="col-md-offset-2 col-md-8 col-sm-12">
-						<h2>守望先锋</h2>
+						<!--<h2>守望先锋</h2>-->
+						
 						<!--<p><strong><span class="green">Overwatch</span><span class="yellow">mo</span></strong>.com website provides a lot of free responsive templates for everyone. You can download, edit and apply this layout for any purpose. Please tell your friends about our website. Thank you.</p>-->
 					
 					</div>
@@ -120,11 +131,10 @@
 		</div>
 	</div>
 	<!-- SLIDER OPTIONS -->
-	<div class="slider-options">
+	<!--<div class="slider-options">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-sm-4 col-xs-4 slider-nav">
-					<!-- Controls -->
 					<a class="left carousel-control" href="#home" role="button" data-slide="prev">
 						<span class="fa fa-angle-left"></span>
 					</a>
@@ -134,7 +144,6 @@
 				</div>
 
 				<div class="col-md-4 col-sm-4 col-xs-4">
-					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#home" data-slide-to="0" class="active"></li>
 						<li data-target="#home" data-slide-to="1"></li>
@@ -148,7 +157,7 @@
 
 			</div>
 		</div>
-	</div>
+	</div>-->
 
 </div> <!-- Carousel -->
 
@@ -244,8 +253,8 @@
 			<div class="gallery-holder">
 				<div class="col-md-3 col-sm-6 col-xs-12 gallery-item">
 					<div class="gallery-thumb">
-						<!--<p>小时候</p>-->
-						<img src="img/jz.jpg" alt="">
+						<video style="width: 100%;" controls>
+						  　　<source src="video/1.mp4" type="video/mp4">
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 col-xs-12 gallery-item">
@@ -433,5 +442,6 @@
     var _hmt = _hmt || [];
 	})
 </script>
+<script>document.getElementById("shipin").volume = 0;</script>
 </body>
 </html>
